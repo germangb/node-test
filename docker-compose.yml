@@ -1,0 +1,20 @@
+version: '2'
+
+services:
+    node:
+        image: node
+        build: ./images/node
+        volumes:
+            - ./app:/usr/src/app
+        depends_on:
+            - redis
+    redis:
+        image: redis
+    nginx:
+        image: nginx
+        ports:
+            - '80:80'
+        volumes:
+            - ./config/nginx:/etc/nginx/conf.d
+        depends_on:
+            - node
