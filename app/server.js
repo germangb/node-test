@@ -14,7 +14,7 @@ app.use(session({
     store: new redis_store(redis_opt)
 }))
 
-app.get('/', function(req, res) {
+app.get('/', (req, res) => {
     res.send('Hello node!!!!! :D')
 })
 
